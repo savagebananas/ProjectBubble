@@ -1348,6 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   aboveWater: 0
+  transitionDuration: 0.1
 --- !u!4 &1983850616
 Transform:
   m_ObjectHideFlags: 0
