@@ -55,7 +55,7 @@ public class PauseScreen : MonoBehaviour
     public void MainMenu()
     {
     	Time.timeScale = 1f;
-    	SceneManager.LoadScene("StartScene");
+    	SceneManager.LoadScene("MainMenu");
     }
 
     public void RetryGame()
