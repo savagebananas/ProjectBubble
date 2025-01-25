@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool aboveWater;
 
     private bool inputEnabled = true;
+    float inputX;
+    float inputY;
 
     private float elapsedTime;
     [SerializeField] private float transitionDuration;
@@ -19,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        inputX = Input.GetAxisRaw("Horizontal");
+        inputY = Input.GetAxisRaw("Vertical");
 
 
         // Water
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (inputEnabled)
             {
-                Vector3 movement = new Vector3(x * speed * Time.deltaTime, y * speed * Time.deltaTime, 0);
+                Vector3 movement = new Vector3(inputX * speed * Time.deltaTime, inputY * speed * Time.deltaTime, 0);
                 transform.position += movement;
             }
 
@@ -47,12 +49,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (inputEnabled)
             {
-                Vector3 aboveWaterMovement = new Vector3(x * speed * Time.deltaTime, 0, 0);
+                Vector3 aboveWaterMovement = new Vector3(inputX * speed * Time.deltaTime, 0, 0);
                 transform.position += aboveWaterMovement;
             }
 
             // player pressed down while on the surface
-            if (y < 0 && !inTransition)
+            if (inputY < 0 && !inTransition)
             {
                 Debug.Log("surface to water");
                 StartCoroutine(SurfaceToWater(transitionDuration));
