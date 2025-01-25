@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Fishing : MonoBehaviour
@@ -30,8 +31,4 @@ public class Fishing : MonoBehaviour
     	rb.rotation = Quaternion.Euler(0, 0, aimAngle);
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-    	
-    }
 }
