@@ -8,7 +8,7 @@ public class PauseScreen : MonoBehaviour
 	public GameObject pauseScreen;
     public GameObject gameOverScreen;
 	public static bool isPaused;
-    public playerOxygen Player;
+    public PlayerOxygen Player;
 
     // Start is called before the first frame update
     void Start()

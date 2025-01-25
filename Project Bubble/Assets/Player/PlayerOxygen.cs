@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class playerOxygen : MonoBehaviour
+public class PlayerOxygen : MonoBehaviour
 {
 	public float oxygen = 100.0f;
 	public float maxOxygen = 100.0f;
-	public oxygenBar OxygenBar;
+	public OxygenBar OxygenBar;
 	public GameObject player;
 	public float decreaseSpeed = 1.0f;
 	public float addOxygen = 20.0f;
@@ -14,7 +14,7 @@ public class playerOxygen : MonoBehaviour
     {
         if(player.transform.position.y < 0)
         {
-        	oxygen -= decreaseSpeed;
+        	oxygen -= decreaseSpeed * Time.deltaTime;
         	OxygenBar.fillAmount = oxygen / maxOxygen;
         }
 
@@ -22,6 +22,7 @@ public class playerOxygen : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger");
         if(other.gameObject.tag == "Bubble")
         {
             oxygen += addOxygen;

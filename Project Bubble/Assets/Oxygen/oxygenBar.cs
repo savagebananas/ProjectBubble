@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class oxygenBar : MonoBehaviour
+public class OxygenBar : MonoBehaviour
 {
 	public Image fill; 
     public float speed = 1.0f;
