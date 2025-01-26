@@ -4,14 +4,14 @@ using UnityEngine.UIElements;
 
 public class PlayerFishing : MonoBehaviour
 {
-	private Rigidbody rb;
 	public BubbleGun bubbleGun;
+    [SerializeField] private PlayerOxygen playerOxygen;
 
 	Vector3 mousePosition;
 
     private void Awake()
     {
-        rb = bubbleGun.GetComponent<Rigidbody>();
+        playerOxygen = GetComponent<PlayerOxygen>();
     }
 
     void Update()
@@ -19,6 +19,7 @@ public class PlayerFishing : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
         	bubbleGun.Fire();
+            playerOxygen.oxygen -= 5;
         }
 
         Vector2 center = new Vector2(Screen.width / 2,Screen.height / 2);

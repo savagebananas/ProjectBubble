@@ -22,7 +22,6 @@ public class PlayerOxygen : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger");
         if(other.gameObject.tag == "Bubble")
         {
             oxygen += addOxygen;
@@ -31,7 +30,7 @@ public class PlayerOxygen : MonoBehaviour
                 oxygen = maxOxygen;
             }
             OxygenBar.fillAmount = oxygen / maxOxygen;
+            other.GetComponent<AirBubble>().CollectBubble(transform);
         }
-        Destroy(other.gameObject);
     }
 }
