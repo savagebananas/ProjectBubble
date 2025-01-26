@@ -130,41 +130,65 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputX == 1 && inputY == 1)
         {
-            diverAnimator.SetTrigger("SwimUp");
+            diverAnimator.SetBool("SwimUp", true);
+            diverAnimator.SetBool("Idle", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
         else if (inputX == 1 && inputY == -1)
         {
-            diverAnimator.SetTrigger("SwimDown");
+            diverAnimator.SetBool("SwimDown", true);
+            diverAnimator.SetBool("Idle", false);
+            diverAnimator.SetBool("SwimUp", false);
         }
         else if (inputX == -1 && inputY == 1)
         {
-            diverAnimator.SetTrigger("SwimUp");
+            diverAnimator.SetBool("SwimUp", true); 
+            diverAnimator.SetBool("Idle", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
         else if (inputX == -1 && inputY == -1)
         {
-            diverAnimator.SetTrigger("SwimDown");
+            diverAnimator.SetBool("SwimDown", true);
+            diverAnimator.SetBool("Idle", false);
+            diverAnimator.SetBool("SwimUp", false);
         }
         else if (inputY == 1 && inputX == 0)
         {
-            diverAnimator.SetTrigger("Idle");
+            diverAnimator.SetBool("Idle", true);
+            diverAnimator.SetBool("SwimUp", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
         else if (inputY == -1 && inputX == 0)
         {
-            diverAnimator.SetTrigger("Idle");
+            diverAnimator.SetBool("Idle", true);
+            diverAnimator.SetBool("SwimUp", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
         else if (inputX == 1 && inputY == 0)
         {
-            diverAnimator.SetTrigger("SwimUp");
+            diverAnimator.SetBool("SwimUp", true);
+            diverAnimator.SetBool("Idle", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
         else if (inputX == -1 && inputY == 0)
         {
-            diverAnimator.SetTrigger("SwimUp");
+            diverAnimator.SetBool("SwimUp", true);
+            diverAnimator.SetBool("Idle", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
         else
         {
-            diverAnimator.SetTrigger("Idle");
+            diverAnimator.SetBool("Idle", true);
+            diverAnimator.SetBool("SwimUp", false);
+            diverAnimator.SetBool("SwimDown", false);
         }
-
     }
     
+
+    private void SetBoolsFalse()
+    {
+        diverAnimator.SetBool("Idle", false);
+        diverAnimator.SetBool("SwimUp", false);
+        diverAnimator.SetBool("SwimDown", false);
+    }
 }
