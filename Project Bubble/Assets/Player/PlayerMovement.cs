@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer rend;
     [SerializeField] private Animator diverAnimator;
 
+    // SFX
+    [SerializeField] private AudioSource ambience;
+
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
@@ -43,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
             if (transform.position.y >= 0.55 && !inTransition)
             {
                 Debug.Log("water to surface");
+                ambience.volume = 0;
                 StartCoroutine(WaterToSurface(transitionDuration));
             }
         }
@@ -60,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             if (inputY < 0 && !inTransition)
             {
                 Debug.Log("surface to water");
+                ambience.volume = 0.5f;
                 StartCoroutine(SurfaceToWater(transitionDuration));
 
             }
@@ -73,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         elapsedTime += Time.deltaTime;
         float percentageComplete = elapsedTime / transitionDuration;
         transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, -1.5f, 0), percentageComplete);
+        AudioManager.instance.PlaySound("Transition");
         yield return new WaitForSeconds(s);
         aboveWater = false;
         inputEnabled = true;
@@ -87,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
         elapsedTime += Time.deltaTime;
         float percentageComplete = elapsedTime / transitionDuration;
         transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, 0.5f, 0), percentageComplete);
+        AudioManager.instance.PlaySound("Transition");
         yield return new WaitForSeconds(s);
         aboveWater = true;
         inputEnabled = true;

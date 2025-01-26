@@ -75,7 +75,6 @@ public class FishRoam : State
         {
             potentialLocation = Search();
         }
-        Debug.Log(potentialLocation);
         return potentialLocation;
     }
 
