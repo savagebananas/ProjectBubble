@@ -329,6 +329,7 @@ MonoBehaviour:
 
     Left mouse button to shoot bubbles
 
+
     Capturing
     fishes earns points! Different fishes gives different points
 
@@ -341,8 +342,12 @@ MonoBehaviour:
     runs out
 
 
-    Going back to the surface or find bubbles in the ocean can regenerate
-    oxygen'
+    Going back to the surface, find bubbles in the ocean , or collecting
+    fish trapped in bubbles can regenerate oxygen
+
+
+    *Shooting bubbles from the
+    bubble gun also uses up your oxygen!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6e5a54914b6e84a52b2397e9848b6575, type: 2}
   m_sharedMaterial: {fileID: 8073309194446479847, guid: 6e5a54914b6e84a52b2397e9848b6575, type: 2}
@@ -369,8 +374,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2840,7 +2845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1765339353
 RectTransform:
   m_ObjectHideFlags: 0
