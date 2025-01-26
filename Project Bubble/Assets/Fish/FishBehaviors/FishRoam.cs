@@ -9,7 +9,7 @@ public class FishRoam : State
     [SerializeField] private float speed;
     [SerializeField] private float maxRoamingDistance;
     [SerializeField] private float timeBetweenRoams;
-    private bool once2;
+    private bool searchingForPoint;
 
     private Vector3 nextRoamPosition;
 
@@ -32,9 +32,9 @@ public class FishRoam : State
         }
         else
         {
-            if (once2 == false)
+            if (searchingForPoint == false)
             {
-                once2 = true;
+                searchingForPoint = true;
 
                 StartCoroutine(RoamingCooldown());
             }
@@ -55,7 +55,10 @@ public class FishRoam : State
         }
     }
 
-    private void SearchWalkPoint()
+    /// <summary>
+    /// Finds New Point to go to
+    /// </summary>
+    private void SearchMovePoint()
     {
         float randomX = Random.Range(-maxRoamingDistance, maxRoamingDistance);
         float randomY = Random.Range(-maxRoamingDistance, maxRoamingDistance);
@@ -66,8 +69,8 @@ public class FishRoam : State
     {
         timeBetweenRoams = Random.Range(3f, 6f);
         yield return new WaitForSeconds(timeBetweenRoams);
-        SearchWalkPoint();
-        once2 = false;
+        SearchMovePoint();
+        searchingForPoint = false;
     }
     #endregion
 }
