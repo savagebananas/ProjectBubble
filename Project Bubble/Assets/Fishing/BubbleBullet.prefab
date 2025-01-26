@@ -105,7 +105,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubbleTrap: {fileID: 4586283329685580550, guid: c3dea3bef22b34c939254302ff8f0010, type: 3}
   waitSeconds: 2
+  animator: {fileID: 5338805234913415614}
+  endScale: {x: 5, y: 5, z: 5}
 --- !u!95 &5338805234913415614
 Animator:
   serializedVersion: 7

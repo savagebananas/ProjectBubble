@@ -1,16 +1,58 @@
+using System.Threading;
 using UnityEngine;
 
-public class FishCapture : MonoBehaviour
+public class FishCapture : State
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private State roamState;
+    [SerializeField] private float captureDuration;
+    private float timer;
+
+    private bool collectedByPlayer;
+    private Transform player;
+
+    public GameObject bubble;
+    
+
+    public override void OnStart() 
     {
-        
+        timer = captureDuration;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnUpdate()
     {
-        
+        if (!collectedByPlayer)
+        {
+            timer -= Time.deltaTime;
+            // Fish escaped
+            if (timer < 0)
+            {
+                GameObject.Destroy(bubble);
+                parent.GetComponent<Fish>().isCaptured = false;
+                // SFX ??
+                stateMachine.SetNewState(roamState);
+            }
+        }
+
+        else
+        {
+            parent.GetComponent<Animator>().SetBool("Capture", true);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, 0.1f);
+            Invoke(nameof(DestroyGameObject), 0.1f);
+        }
+    }
+
+
+    
+
+    public void CollectBubble(Transform player)
+    {
+        this.player = player;
+        collectedByPlayer = true;
+    }
+
+
+    void DestroyGameObject()
+    {
+        Destroy(parent.gameObject);
     }
 }

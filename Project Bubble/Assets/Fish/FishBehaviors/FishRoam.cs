@@ -15,7 +15,7 @@ public class FishRoam : State
 
     public override void OnStart()
     {
-        throw new System.NotImplementedException();
+        SearchMovePoint();
     }
 
     public override void OnUpdate()
@@ -34,9 +34,7 @@ public class FishRoam : State
         {
             if (searchingForPoint == false)
             {
-                searchingForPoint = true;
-
-                StartCoroutine(RoamingCooldown());
+                StartCoroutine(RoamingCooldown());            
             }
         }
     }
@@ -60,14 +58,30 @@ public class FishRoam : State
     /// </summary>
     private void SearchMovePoint()
     {
-        float randomX = Random.Range(-maxRoamingDistance, maxRoamingDistance);
+        //if (searchingForPoint == false) return;
+
+
+        //Debug.Log("location found: " + potentialLocation);
+        nextRoamPosition = Search();
+    }
+
+    private Vector3 Search()
+    {
+        float randomX = Random.Range(-maxRoamingDistance * 5, maxRoamingDistance * 5);
         float randomY = Random.Range(-maxRoamingDistance, maxRoamingDistance);
-        nextRoamPosition = new Vector2(parent.transform.position.x + randomX, parent.transform.position.y + randomY);
+        var potentialLocation = new Vector3(parent.transform.position.x + randomX, parent.transform.position.y + randomY, 0);
+
+        if (Physics.CheckBox(potentialLocation, new Vector3(0.5f, 0.5f, 0.1f), Quaternion.identity, 7, QueryTriggerInteraction.Ignore) || potentialLocation.y > -0.5f)
+        {
+            potentialLocation = Search();
+        }
+        Debug.Log(potentialLocation);
+        return potentialLocation;
     }
 
     private IEnumerator RoamingCooldown()
     {
-        timeBetweenRoams = Random.Range(3f, 6f);
+        searchingForPoint = true;
         yield return new WaitForSeconds(timeBetweenRoams);
         SearchMovePoint();
         searchingForPoint = false;

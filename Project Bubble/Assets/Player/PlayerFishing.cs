@@ -27,5 +27,18 @@ public class PlayerFishing : MonoBehaviour
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         bubbleGun.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Fish")
+        {
+            var fish = other.gameObject.GetComponent<Fish>();
+            if (fish.isCaptured)
+            {
+
+                fish.GetComponentInChildren<FishCapture>().CollectBubble(transform);
+                ScoreSystem.Instance.AddScore(fish.value);
+            }
+        }
+    }
 
 }
