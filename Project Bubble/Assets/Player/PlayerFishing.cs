@@ -1,14 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerFishing : MonoBehaviour
 {
-	public Rigidbody rb;
+	private Rigidbody rb;
 	public BubbleGun bubbleGun;
 
 	Vector3 mousePosition;
 
-    // Update is called once per frame
+    private void Awake()
+    {
+        rb = bubbleGun.GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -16,19 +21,10 @@ public class PlayerFishing : MonoBehaviour
         	bubbleGun.Fire();
         }
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit hit))
-        {
-        	mousePosition = hit.point;
-        }
-
-    }
-
-    private void FixedUpdate()
-    {
-    	Vector3 aimDirection = (mousePosition - rb.position).normalized;
-    	float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-    	rb.rotation = Quaternion.Euler(0, 0, aimAngle);
+        Vector2 center = new Vector2(Screen.width / 2,Screen.height / 2);
+        Vector3 aimDirection = ((Vector2) Input.mousePosition - center).normalized;
+        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        bubbleGun.transform.rotation = Quaternion.Euler(0, 0, aimAngle);
     }
 
 }

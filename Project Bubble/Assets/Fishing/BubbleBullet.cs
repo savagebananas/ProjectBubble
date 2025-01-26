@@ -15,7 +15,7 @@ public class BubbleBullet : MonoBehaviour
     		Vector3 bubbleSize = other.transform.localScale;
     		StartCoroutine(BubbleTrap(other.transform.position, bubbleSize, other.gameObject));
     	}
-    	else
+    	else if (other.gameObject.tag == "Ground")
     	{
     		Destroy(gameObject);
     	}

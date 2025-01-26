@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2556271890507890541}
   - component: {fileID: 1445733583274161737}
   - component: {fileID: 5828254344906043796}
+  - component: {fileID: 5338805234913415614}
   m_Layer: 0
   m_Name: BubbleBullet
   m_TagString: Untagged
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 5643862104662373686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 96.8, y: 102.1, z: 590.5}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  - {fileID: -876546973899608171, guid: 0aec0350d9a9a334898c2a6276b39e39, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,4 +152,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubbleTrap: {fileID: 4586283329685580550, guid: c3dea3bef22b34c939254302ff8f0010, type: 3}
   waitSeconds: 2
-  scoreSystem: {fileID: 5596781541499027587, guid: 5a0d9dce2d668449e922d5b4143d88d9, type: 3}
+--- !u!95 &5338805234913415614
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643862104662373686}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac17bfcb6619d144faff0a21d0ada3ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

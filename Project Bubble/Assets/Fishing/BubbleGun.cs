@@ -6,6 +6,8 @@ public class BubbleGun : MonoBehaviour
 	public Transform firePoint;
 	public float fireForce = 20.0f;
 
+
+
 	public void Fire()
 	{
 		GameObject bubbleBullet = Instantiate(bubbleBulletPrefab, firePoint.position, firePoint.rotation);
