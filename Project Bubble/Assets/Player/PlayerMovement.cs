@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
         FlipPlayer();
+        StartCoroutine(SetAnimation());
 
         // Water
         if (!aboveWater)
@@ -105,8 +106,65 @@ public class PlayerMovement : MonoBehaviour
             rend.flipX = true;
         }
 
-        diverAnimator.SetInteger("XDirection", (int) inputX);
-        diverAnimator.SetInteger("YDirection", (int) inputY);
+        //Flip player on Y-axis only for straight up and down
+        if (inputY == 1 && inputX == 0)
+        {
+            rend.flipY = false;
+        }
+        else if (inputY == -1 && inputX == 0)
+        {
+            rend.flipY = true;
+        }
+        else
+        {
+            rend.flipY = false;
+        }
+
+        //diverAnimator.SetInteger("XDirection", (int) inputX);
+        //diverAnimator.SetInteger("YDirection", (int) inputY);
+
+    }
+
+    private IEnumerator SetAnimation()
+    {
+        if (inputX == 1 && inputY == 1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerSwimUp");
+        }
+        else if (inputX == 1 && inputY == -1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerSwimDown");
+        }
+        // Check for diagonal movements
+        else if (inputX == -1 && inputY == 1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerSwimUp");
+        }
+        else if (inputX == -1 && inputY == -1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerSwimDown");
+        }
+        // Check for straight up and down movement
+        else if (inputY == 1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerIdle");
+        }
+        else if (inputY == -1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerIdle");
+        }
+        // If there is no input, idle
+        else if (inputX == 0 && inputY == 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            diverAnimator.Play("PlayerIdle");
+        }
 
     }
     
