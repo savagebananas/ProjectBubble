@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     // SFX
     [SerializeField] private AudioSource ambience;
 
+    private void Awake()
+    {
+        AudioManager.instance.PlaySound("Music");
+    }
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
