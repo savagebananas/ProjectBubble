@@ -151,3 +151,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubbleTrap: {fileID: 4586283329685580550, guid: c3dea3bef22b34c939254302ff8f0010, type: 3}
   waitSeconds: 2
+  scoreSystem: {fileID: 5596781541499027587, guid: 5a0d9dce2d668449e922d5b4143d88d9, type: 3}
