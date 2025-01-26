@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // SFX
     [SerializeField] private AudioSource ambience;
 
-    private void Awake()
+    private void Start()
     {
         AudioManager.instance.PlaySound("Music");
     }

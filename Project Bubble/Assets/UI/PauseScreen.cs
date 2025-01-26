@@ -10,14 +10,12 @@ public class PauseScreen : MonoBehaviour
 	public static bool isPaused;
     public PlayerOxygen Player;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         pauseScreen.SetActive(false);
         gameOverScreen.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
