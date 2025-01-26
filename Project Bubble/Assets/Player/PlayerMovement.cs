@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -19,11 +20,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float transitionDuration;
     private bool inTransition = false;
 
+    // Visuals
+    [SerializeField] private SpriteRenderer rend;
+    [SerializeField] private Animator diverAnimator;
+
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
-
+        FlipPlayer();
 
         // Water
         if (!aboveWater)
@@ -87,4 +92,21 @@ public class PlayerMovement : MonoBehaviour
         elapsedTime = 0;
     }
 
+    private void FlipPlayer()
+    {
+        //Flip player on X-axis
+        if (inputX == 1)
+        {
+            rend.flipX = false;
+        }
+        else if(inputX == -1)
+        {
+            rend.flipX = true;
+        }
+
+        diverAnimator.SetInteger("XDirection", (int) inputX);
+        diverAnimator.SetInteger("YDirection", (int) inputY);
+
+    }
+    
 }

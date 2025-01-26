@@ -1421,6 +1421,8 @@ MonoBehaviour:
   speed: 5
   aboveWater: 0
   transitionDuration: 0.1
+  rend: {fileID: 2046072059}
+  diverAnimator: {fileID: 2046072058}
 --- !u!4 &1983850616
 Transform:
   m_ObjectHideFlags: 0
