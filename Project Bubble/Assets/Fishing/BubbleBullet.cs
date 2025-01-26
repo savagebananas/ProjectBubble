@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BubbleBullet : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BubbleBullet : MonoBehaviour
 	{
 		if(other.gameObject.tag == "Fish")
     	{
+            ScoreSystem.Instance.AddScore(1);
     		Vector3 bubbleSize = other.transform.localScale;
     		StartCoroutine(BubbleTrap(other.transform.position, bubbleSize, other.gameObject));
     	}

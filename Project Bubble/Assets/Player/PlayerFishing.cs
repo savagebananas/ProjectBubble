@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Fishing : MonoBehaviour
+public class PlayerFishing : MonoBehaviour
 {
 	public Rigidbody rb;
 	public BubbleGun bubbleGun;
