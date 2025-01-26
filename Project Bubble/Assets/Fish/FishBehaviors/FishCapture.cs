@@ -37,6 +37,7 @@ public class FishCapture : State
         {
             parent.GetComponent<Animator>().SetBool("Capture", true);
             transform.position = Vector3.MoveTowards(transform.position, player.position, 0.1f);
+            AudioManager.instance.PlaySound("Points");
             Invoke(nameof(DestroyGameObject), 0.1f);
         }
     }
