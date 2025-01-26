@@ -45,14 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Ambience
-    audioClip: {fileID: 8300000, guid: 11bca41ed20f274469d34b66eb8e3673, type: 3}
-    volume: 0.082
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
   - name: Transition
     audioClip: {fileID: 8300000, guid: 7e08a063fe1f5bf4ca83fe39a607f6f6, type: 3}
+    volume: 0.418
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shoot
+    audioClip: {fileID: 8300000, guid: a9c4ef08a1ec2a2428c9c2f2ac5e5d4f, type: 3}
     volume: 0.418
     pitch: 1
     loop: 0

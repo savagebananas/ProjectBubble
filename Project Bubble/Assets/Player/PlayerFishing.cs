@@ -7,7 +7,8 @@ public class PlayerFishing : MonoBehaviour
 	public BubbleGun bubbleGun;
     [SerializeField] private PlayerOxygen playerOxygen;
 
-	Vector3 mousePosition;
+    [SerializeField] AudioClip shootSfx;
+    [SerializeField] AudioSource shootSfxSource;
 
     private void Awake()
     {
@@ -19,6 +20,8 @@ public class PlayerFishing : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
         	bubbleGun.Fire();
+            //AudioManager.instance.PlaySound("Shoot");
+            shootSfxSource.PlayOneShot(shootSfx);
             playerOxygen.oxygen -= 5;
         }
 
