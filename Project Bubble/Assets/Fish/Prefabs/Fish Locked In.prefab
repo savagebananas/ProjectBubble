@@ -178,7 +178,7 @@ MonoBehaviour:
   stateMachine: {fileID: 6407191589167978824}
   capturedState: {fileID: 6278812152910913961}
   isCaptured: 0
-  value: 5
+  value: 100
   isLockedIn: 1
 --- !u!54 &3456257963733499
 Rigidbody:

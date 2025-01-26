@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerOxygen : MonoBehaviour
@@ -12,7 +13,9 @@ public class PlayerOxygen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.transform.position.y < 0)
+        if (PauseScreen.timePaused) return;
+
+        if (player.transform.position.y < 0)
         {
         	oxygen -= decreaseSpeed * Time.deltaTime;
         	OxygenBar.fillAmount = oxygen / maxOxygen;
@@ -30,6 +33,7 @@ public class PlayerOxygen : MonoBehaviour
                 oxygen = maxOxygen;
             }
             OxygenBar.fillAmount = oxygen / maxOxygen;
+            AudioManager.instance.PlaySound("CollectBubble");
             other.GetComponent<AirBubble>().CollectBubble(transform);
         }
     }

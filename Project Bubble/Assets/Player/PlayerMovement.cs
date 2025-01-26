@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if (PauseScreen.timePaused) return;
+
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
         FlipPlayer();
@@ -41,10 +43,16 @@ public class PlayerMovement : MonoBehaviour
         // Water
         if (!aboveWater)
         {
+            
             if (inputEnabled)
             {
                 Vector3 movement = new Vector3(inputX * speed * Time.deltaTime, inputY * speed * Time.deltaTime, 0);
+                if (transform.position.x >= 100) transform.position = new Vector3(100, transform.position.y, 0);
+                if (transform.position.x <= -100) transform.position = new Vector3(-100, transform.position.y, 0);
+                if (transform.position.y <= -120) transform.position = new Vector3(transform.position.x, -120, 0);
                 transform.position += movement;
+                Debug.Log(movement);
+
             }
 
             if (transform.position.y >= 0.55 && !inTransition)

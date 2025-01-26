@@ -63,3 +63,9 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Points
+    audioClip: {fileID: 8300000, guid: ee934601762c2b844b5dc7d9878141b7, type: 3}
+    volume: 0.293
+    pitch: 3
+    loop: 0
+    source: {fileID: 0}

@@ -19,7 +19,9 @@ public class PlayerFishing : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (PauseScreen.timePaused) return;
+
+        if (Input.GetMouseButtonDown(0))
         {
         	bubbleGun.Fire();
             //AudioManager.instance.PlaySound("Shoot");
@@ -41,7 +43,7 @@ public class PlayerFishing : MonoBehaviour
             var fish = other.gameObject.GetComponent<Fish>();
             if (fish.isCaptured)
             {
-
+                AudioManager.instance.PlaySound("CollectBubble");
                 fish.GetComponentInChildren<FishCapture>().CollectBubble(transform);
                 ScoreSystem.Instance.AddScore(fish.value);
             }

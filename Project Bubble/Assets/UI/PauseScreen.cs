@@ -10,10 +10,18 @@ public class PauseScreen : MonoBehaviour
 	public static bool isPaused;
     public PlayerOxygen Player;
 
+    public static bool timePaused;
+
     void Awake()
     {
         pauseScreen.SetActive(false);
         gameOverScreen.SetActive(false);
+    }
+
+    private void Start()
+    {
+        isPaused = false;
+        timePaused = false;
     }
 
     void Update()
@@ -39,33 +47,35 @@ public class PauseScreen : MonoBehaviour
     public void ResumeGame()
     {
         pauseScreen.SetActive(false);
-        Time.timeScale = 1f;
         isPaused = false;
+        timePaused = false;
     }
 
     public void PauseGame()
     {
     	pauseScreen.SetActive(true);
-    	Time.timeScale = 0f; //pauses time in game
     	isPaused = true;
+        timePaused = true;
     }
 
     public void MainMenu()
     {
-    	Time.timeScale = 1f;
+    	//Time.timeScale = 1f;
     	SceneManager.LoadScene("MainMenu");
     }
 
     public void RetryGame()
     {
-    	Scene currentScene = SceneManager.GetActiveScene();
+        //Time.timeScale = 1f;
+        Scene currentScene = SceneManager.GetActiveScene();
     	SceneManager.LoadScene(currentScene.name);
     }
 
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
-        Time.timeScale = 0f;
+        timePaused = true;
+        //Time.timeScale = 0f;
     }
 
 }
