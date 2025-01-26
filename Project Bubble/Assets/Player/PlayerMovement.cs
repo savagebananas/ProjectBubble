@@ -39,13 +39,10 @@ public class PlayerMovement : MonoBehaviour
                 transform.position += movement;
             }
 
-            if (transform.position.y >= 0.25 && !inTransition)
+            if (transform.position.y >= 0.55 && !inTransition)
             {
                 Debug.Log("water to surface");
                 StartCoroutine(WaterToSurface(transitionDuration));
-                elapsedTime += Time.deltaTime;
-                float percentageComplete = elapsedTime / transitionDuration;
-                transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, 0.5f, 0), percentageComplete);
             }
         }
         // Surface
@@ -63,9 +60,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("surface to water");
                 StartCoroutine(SurfaceToWater(transitionDuration));
-                elapsedTime += Time.deltaTime;
-                float percentageComplete = elapsedTime / transitionDuration;
-                transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, -1.5f, 0), percentageComplete);
+
             }
         }
     }
@@ -74,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
     {
         inTransition = true;
         inputEnabled = false;
+        elapsedTime += Time.deltaTime;
+        float percentageComplete = elapsedTime / transitionDuration;
+        transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, -1.5f, 0), percentageComplete);
         yield return new WaitForSeconds(s);
         aboveWater = false;
         inputEnabled = true;
@@ -85,6 +83,9 @@ public class PlayerMovement : MonoBehaviour
     {
         inTransition = true;
         inputEnabled = false;
+        elapsedTime += Time.deltaTime;
+        float percentageComplete = elapsedTime / transitionDuration;
+        transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, 0.5f, 0), percentageComplete);
         yield return new WaitForSeconds(s);
         aboveWater = true;
         inputEnabled = true;
