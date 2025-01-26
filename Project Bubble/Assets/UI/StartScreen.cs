@@ -4,14 +4,34 @@ using UnityEngine.SceneManagement;
 public class StartScreen : MonoBehaviour
 {
 	public GameObject startScreen;
+	public GameObject howToPlay;
+	public AudioSource bubblePop;
 
-	void QuitGame()
+	public void QuitGame()
 	{
 		Application.Quit();
 	}
 
-	void StartGame()
+	public void StartGame()
 	{
+		bubblePop.Play();
 		SceneManager.LoadScene("SampleScene");
+	}
+
+	public void Info()
+	{
+		bubblePop.Play();
+		howToPlay.SetActive(true);
+	}
+
+	public void Back()
+	{
+		bubblePop.Play();
+		howToPlay.SetActive(false);
+	}
+
+	void Start()
+	{
+		howToPlay.SetActive(false);
 	}
 }
