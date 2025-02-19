@@ -14,11 +14,14 @@ public class Spawner : MonoBehaviour
 
 
     [SerializeField] private float timeBeforeBubbleSpawn;
-    private float timer;
+    private float bubbleTimer;
+
+    [SerializeField] private float timeBeforeFishSpawn;
+    private float fishTimer;
 
     private void Awake()
     {
-        timer = timeBeforeBubbleSpawn;
+        bubbleTimer = timeBeforeBubbleSpawn;
 
 
         for (int i = 0; i < fishCount; i++)
@@ -40,14 +43,23 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (timer <= 0)
+        if (bubbleTimer <= 0)
         {
             var b = Instantiate(bubble, new Vector3(Random.Range(-50, 50), Random.Range(-110, -10), 0), Quaternion.identity);
             b.transform.parent = transform;
-            timer = timeBeforeBubbleSpawn;
+            bubbleTimer = timeBeforeBubbleSpawn;
         }
 
-        timer -= Time.deltaTime;
+        bubbleTimer -= Time.deltaTime;
+
+        if (fishTimer <= 0)
+        {
+            var b = Instantiate(fishes[Random.Range(0, fishes.Count)], new Vector3(Random.Range(-50, 50), Random.Range(-110, -10), 0), Quaternion.identity);
+            b.transform.parent = transform;
+            fishTimer = timeBeforeFishSpawn;
+        }
+
+        fishTimer -= Time.deltaTime;
     }
 
 }

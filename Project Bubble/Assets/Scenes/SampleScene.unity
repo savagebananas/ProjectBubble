@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 133347283e115d147a5fcce7f47a538f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -786,9 +786,10 @@ MonoBehaviour:
   - {fileID: 8483963045287867613, guid: 782a34d1560084944a047ea93eed9397, type: 3}
   - {fileID: 142605507726533379, guid: 69b1409e089d2b246a4144efb80b4fe9, type: 3}
   rareFish: {fileID: 4914948219781782704, guid: e2caa2f614b65e44daca9869f6ea01f4, type: 3}
-  bubbleCount: 30
+  bubbleCount: 20
   bubble: {fileID: 4865475166752394210, guid: 575e5ed3cf04a4f99b6f5708a2615cdb, type: 3}
-  timeBeforeBubbleSpawn: 1
+  timeBeforeBubbleSpawn: 5
+  timeBeforeFishSpawn: 3
 --- !u!4 &691556809
 Transform:
   m_ObjectHideFlags: 0
